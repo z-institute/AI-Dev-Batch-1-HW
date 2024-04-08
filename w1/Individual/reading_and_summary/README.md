@@ -6,124 +6,23 @@
    `Get Single Response` 跟 `Batch Update Responses`，而這兩個下拉選單分別會呼叫兩個不同的 function，
    `getSingleResponse` 跟 `batchUpdateResponses`
 
-```
-function onOpen() {
-  var ui = SpreadsheetApp.getUi();
-  ui.createMenu('AccuGPTsheet')
-      .addItem('Get Single Response', 'getSingleResponse')
-      .addItem('Batch Update Responses', 'batchUpdateResponses')
-      .addToUi();
-}
-```
+   ![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049011/w1/Individual/img/onOpen.png)
 
 2. 該 function 主要是在被觸發時會顯示一個提示框告知使用者正在取得資料
 
-```
-function displayLoadingDialog() {
-  var htmlOutput = HtmlService
-                    .createHtmlOutput('<p>Loading... Please wait.</p>')
-                    .setWidth(250)
-                    .setHeight(100);
-  SpreadsheetApp.getUi().showModalDialog(htmlOutput, 'Fetching Response');
-}
-```
+   ![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049011/w1/Individual/img/displayLoadingDialog.png)
 
 3. 該 function 主要是在跟 openai 溝通並取得回覆，若結果有誤則會顯示錯誤
 
-```
-function callGPT3Turbo16kAPI(query) {
-  try {
-    var apiKey = 'YOUR_OPENAI_API_KEY';  // Replace with your OpenAI API key
-    var apiEndpoint = 'https://api.openai.com/v1/chat/completions';
-
-    var headers = {
-      "Authorization": "Bearer " + apiKey,
-      "Content-Type": "application/json"
-    };
-
-    var payload = {
-      "model": "gpt-3.5-turbo-16k",
-      "messages": [
-          {"role": "system", "content": "You are a helpful assistant."},
-          {"role": "user", "content": query}
-      ],
-      "max_tokens": 3000
-    };
-
-    var options = {
-      "method": "POST",
-      "headers": headers,
-      "payload": JSON.stringify(payload),
-      "muteHttpExceptions": true
-    };
-
-    var response = UrlFetchApp.fetch(apiEndpoint, options);
-    var jsonResponse = JSON.parse(response.getContentText());
-
-    if (jsonResponse.choices && jsonResponse.choices.length > 0) {
-      return jsonResponse.choices[0].message.content;
-    } else {
-      Logger.log("API Response Error: " + JSON.stringify(jsonResponse));
-      return "Error: Unable to fetch response";
-    }
-  } catch (error) {
-    Logger.log("Error in callGPT3Turbo16kAPI: " + error.toString());
-    return "Error: " + error.toString();
-  }
-}
-```
+   ![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049011/w1/Individual/img/callGPT3Turbo16kAPI.png)
 
 4. 該 function 主要是在執行被選取的格子裡的資料當作 prompt 並送出給 openai，如果欄位內沒資料則不會送給 openai，若有資料則會顯示 loading 的 dialog 並發動 `callGPT3Turbo16kAPI` 這個 function，並在成功拿到回覆後顯示結束並將結果顯示在對應列的 B 儲存格裡，需注意資料不一定要寫在 A 欄位而是可以寫在任意區塊，不論 prompt 寫在哪最後都會被寫在對應列的 B 儲存格裡，即使將 prompt 寫在 B 欄也一樣，只是最後會被覆蓋而已
 
-```
-function getSingleResponse() {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  var cellValue = sheet.getActiveCell().getValue();
-
-  if (cellValue) {
-    // Show the loading dialog
-    displayLoadingDialog();
-
-    // Fetch the response
-    var response = callGPT3Turbo16kAPI(cellValue);
-
-    // Close the loading dialog after a short delay
-    Utilities.sleep(2000);  // 2 seconds delay
-    SpreadsheetApp.getUi().alert('Done!');
-
-    // Update the B column with the response
-    sheet.getRange(sheet.getActiveCell().getRow(), 2).setValue(response);
-  }
-}
-```
+   ![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049011/w1/Individual/img/getSingleResponse.png)
 
 5. 跟上面的 function 很像只不過該 function 只支援資料在 A 欄裡，並會用回圈的形式將回復一一回填
 
-```
-function batchUpdateResponses() {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  var columnA = sheet.getRange("A:A").getValues();
-  var responses = [];
-
-  // Show the loading dialog
-  displayLoadingDialog();
-
-  for (var i = 0; i < columnA.length; i++) {
-    var query = columnA[i][0];
-    if (query) {
-      responses.push([callGPT3Turbo16kAPI(query)]);
-    } else {
-      responses.push([""]);  // Empty response for empty queries
-    }
-  }
-
-  // Close the loading dialog after a short delay
-  Utilities.sleep(2000);  // 2 seconds delay
-  SpreadsheetApp.getUi().alert('Batch update complete!');
-
-  sheet.getRange(1, 2, responses.length, 1).setValues(responses);
-}
-```
+   ![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049011/w1/Individual/img/batchUpdateResponses.png)
 
 \*優化
 
@@ -131,15 +30,37 @@ function batchUpdateResponses() {
 可以將 52 行的 else 去除因為前面的 if 已經會做 return 的動作
 ```
 
+![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049011/w1/Individual/img/ref-if.png)
+
 ```
 可以將 92 - 99 用 map 的形式下去跑回圈會顯得更直觀
 ```
 
+![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049011/w1/Individual/img/ref-for.png)
+
 ```
-最後可以將 function 的表達是改為 arrow function 並將變數以 const 宣告
+最後可以將 function 的表達是改為 Arrow function 並將變數以 const 宣告
 var 是一個不建議使用的宣告形式
 而在 for loop 內使用 var 會有全域覆蓋的問題
 ```
+
+### 測試截圖
+
+單筆測試
+
+![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049011/w1/Individual/img/single.png)
+
+多筆測試
+
+![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049011/w1/Individual/img/simple.png)
+
+輸入欄位不在Ａ欄測試
+
+![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049011/w1/Individual/img/notInA.png)
+
+輸入欄位在Ｂ欄測試
+
+![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049011/w1/Individual/img/inB.png)
 
 ## LangChain
 
