@@ -1,66 +1,109 @@
-## Foundry
+# AccuGPTsheet
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+AccuGPTsheet 是一款能夠在 Google Sheets 中直接調用 GPT-3.5 Turbo API 的工具。透過 AccuGPTsheet，用戶可以在 Google Sheets 的電子表格中直接利用 GPT-3.5 Turbo 的強大自然語言處理能力，進行：
+1. 對**特定列中的所有內容**進行智能分析和回應生成
+2. 對當前選中的**單個儲存格**進行處理
+進而提高生產效率，和實現高度自動化的資料處理設計。
 
-Foundry consists of:
+**使用 AccuGPTsheet 的好處**
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- **自動化資料處理**：可以自動化執行如摘要、分類、問答等多種基於資料的任務，大幅提升工作效率。
+- **直接在表格中使用**：無需離開 Google Sheets 或使用外部軟件，直接在電子表格環境中調用高級 AI 能力。
+- **靈活應用**：適用於市場研究、數據分析、自動生成報告資料等多種場景，特別適合需要處理大量資料數據的用戶。
+- **簡化操作**：用戶友好的設計使得即使是非技術背景的用戶也能輕鬆上手，通過幾個簡單的步驟即可完成複雜的資料處理任務。
 
-## Documentation
+## 文件連結
 
-https://book.getfoundry.sh/
+https://github.com/accucrazy/AccuGPTsheet
 
-## Usage
+## 實作紀錄
 
-### Build
+### 安裝與設定
+Step 1. 命名檔案名稱為**Z-W1 HW AccuGPTsheet Practice** 
 
-```shell
-$ forge build
-```
+Step 2. 點擊上方的 擴充元件 > Apps Script 以開啟 Google Apps Script 編輯器 
 
-### Test
+Step 3. 命名專案名稱為 **AccuGPTsheet script**，刪除所有預設的程式碼 
 
-```shell
-$ forge test
-```
+Step 4. 將提供的 "AccuGPTsheet" script 完整複製並貼上 (main.js) 
 
-### Format
+Step 5. 在 script 中用 ctrl+f 尋找要替換 openai API key 的段落 
 
-```shell
-$ forge fmt
-```
+Step 6. 去 OpenAI 官網選擇 API 產品登入 
 
-### Gas Snapshots
+Step 7. 到 帳號設定 > API keys 頁面，點擊 **+Create new secret key** 取得 API key 
 
-```shell
-$ forge snapshot
-```
+Step 8. 回到第 5 步的 Apps Script，把 OpenAI API key 替換上去 
 
-### Anvil
+Step 9. 鍵入 ctrl+s 進行儲存，完成後就可以關閉 script 編輯器了 
 
-```shell
-$ anvil
-```
+Step 10. 回到 Google Sheet，重新整理或關閉再開啟頁面，就可以在導航選單看見**AccuGPTsheet** 
 
-### Deploy
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+### 使用範例 1：針對特定列中的所有內容，取得批次回應
 
-### Cast
+Step 1. 選擇 A 列中的 A1~A4 儲存格
 
-```shell
-$ cast <subcommand>
-```
+Step 2. 在 AccuGPTsheet 選單中，選擇「Batch Update Responses」
 
-### Help
+Step 3. 等待 API 回傳結果後，B 列顯示批次回應
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+注意：如果 API 回應失敗，顯示 Error: Unable to fetch response，請檢查在 OpenAI 是否已經完成綁定信用卡，完成後才能成功取得 API 回應。
+
+
+### 使用範例 2：針對單一儲存格，取得單一回應
+
+Step 1. 選擇 A1 儲存格
+
+Step 2. 在 AccuGPTsheet 選單中，選擇「Get Single Response」
+
+Step 3. 等待 API 回傳結果後，B1 儲存格顯示單一回應
+
+
+# LangChain 的優點們
+- **統一接口**：LangChain 提供了統一的使用介面，讓用戶可以輕鬆地利用不同的大型語言模型進行內容生成。
+- **系統化方法**：LangChain 採用系統化的方法對 Generative AI 工作流程中的不同流程進行分類，讓用戶能夠更清楚理解和管理流程。
+- **模組化設計**：LangChain 的結構模組化，用戶可以根據需要自由組合和連接各個模組，實現更靈活和高效的數據處理流程。
+- **多功能性**：LangChain 支持多種不同類型的LLM服務，包括內容生成、問答系統等，滿足不同用戶的需求。
+- **高度自定義性**： 用戶可以根據自己的需求客製化提示、鏈條和輸出解析器，使LangChain能夠適應不同的應用場景。
+>「鏈條」是指 LangChain 中的一個概念，用於封裝函數，將提示和模型包裝起來，從而創建一個函數，該函數接收輸入數據並返回數據。換句話說，鏈條是對複雜的提示管道的抽象，使用者能夠創建一個函數，該函數接收一些數據並輸出與 OpenAI Playground 類似的數據。在 LangChain 中，鏈條可以被看作是整個系統中的基本組成單元，用於實現特定的 NLP 功能或任務。\
+>「輸出解析器」是 LangChain 中的一個概念，用於將模型的輸出轉換成特定的格式，以便未來使用。在某些情況下，模型的輸出可能需要進行後續處理或轉換，以符合特定的需求或標準。輸出解析器的作用就是對模型的輸出進行解析、處理或轉換，使其符合預期的格式要求。這可以包括將文本格式化成特定的結構、修復格式錯誤或適應特定的應用場景。LangChain 中提供了多種輸出解析器，用戶可以根據自己的需求選擇合適的解析器來處理模型的輸出。
+- **可擴展性**：LangChain 具有良好的擴展性，可以輕鬆集成其他知名的大型語言模型，擴展其功能和應用範圍。
+- **易用性**：LangChain 提供了簡單易用的API和工具，用戶可以輕鬆地進行設置、操作和管理，降低了使用門檻。
+- **內容範例豐富**：LangChain 提供了豐富的內容範例，用戶可以快速上手並深入理解其使用方法和原理。
+
+
+# 畢業專題
+**1.  官網內容生成**
+*   簡述 3 大重點功能:
+    >1.把公司資訊、產品介紹、聯絡資訊等內容，提供給 AI 模型產生官方網站的架構
+
+    >2.把公司資訊、產品介紹、聯絡資訊等內容，提供給 AI 模型產生視覺設計的建議
+    
+    >3.把公司資訊、產品介紹、聯絡資訊等內容，提供給 AI 模型產生適合 SEO 的行銷文案
+    
+*   參考 project:
+    >Framer AI
+
+    >[Framer 官網](https://www.framer.com/features/ai/)
+
+    >ChatPGT
+    
+    >[ChatGPT 官網](https://chat.openai.com/)
+*   跟市面上的有什麼差別
+    >以行銷目的為前提去生成內容，不僅是資料整理
+
+    >更著重在內容生成後的應用，而不是建立新官網，對已經有官網的用戶相對實用
+
+
+**2.  服務紀錄調閱與建議**
+*   簡述 2 大重點功能:
+    >1.將商家輸入的流水帳服務紀錄，整理為可運用的資料結構
+    >2.將資料運用在 FAQ 給客人使用
+    
+*   參考 project:
+    >沒有找到相關project
+    
+*   跟市面上的有什麼差別
+    >承上
+    
