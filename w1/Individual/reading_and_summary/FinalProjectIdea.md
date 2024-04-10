@@ -1,10 +1,8 @@
 # 畢業專題的構想
 
-→ 可以從想了解的方向來想，而我想學目前市場需要的 所以我去接案的地方找案子來做發想。
-
 [模板網址(開發班畢業專案規劃模板)](https://hackmd.io/@zinstitute/rJj4OXFzp)
 
-## 第一個想做的專案題目點子
+## 第一個想做的專案題目點子 "待補"
 
 ### 簡述 2 大重點功能
 
@@ -25,16 +23,17 @@
 
 (復刻現有的專案)
 
-### 想復刻的專案連結
+### 想復刻的專案連結 講師的AI女友
 
-[專案連結](https://hackmd.io/@zinstitute/rJj4OXFzp)  ##待補
+[專案連結](https://line.me/R/ti/p/@105vhlcz?from=page&liff.referrer=https%3A%2F%2Fgithub.com%2Fz-institute%2FAI-Dev-Batch-1-HW%2Ftree%2FZ24049011%2Fw1%2FIndividual%2Ffinal_project_des&accountId=105vhlcz)
 
 ### 想復刻的 2 大重點功能
 
-1. 功能 1
-2. 功能 2
+1. 功能 1 能夠人性化的對談
+2. 功能 2 能夠依照我的貼文或動態給予回覆
+3. 功能 3 能夠在回覆時順便產出一張相符的圖片
 
 ## 為什麼想做這個的原因
 
-1. 原因1
-2. 原因2
+1. 原因1 想要熟悉LangChain的使用
+2. 原因2 希望有個日常有用的作品
