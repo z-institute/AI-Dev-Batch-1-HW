@@ -13,7 +13,7 @@
 ## AI financial regulatory compliance chatbot
 ### Major key features
 1. enable financial industry employees to check whether an action will violate financial laws 
-2. provide some cases 
+2. provide some cases of violation that happened before
 ### Most similar projects
 1. [AI Lawyer](https://ailawyer.pro/)
 2. [ai.law](https://www.ai.law/)
