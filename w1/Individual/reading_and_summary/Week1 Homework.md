@@ -10,7 +10,7 @@
 
 2. 至[AccuGPTsheet](https://github.com/accucrazy/AccuGPTsheet)的main.js內複製所有內容(code).
 
-<!--![圖片](https://hackmd.io/_uploads/rksVukmgA.png)-->
+![圖片](imges/rksVukmgA.png)
 <img src="https://hackmd.io/_uploads/rksVukmgA.png" alt="image" />
 
 3. 回到Apps Script頁面,將步驟2.的複製內容完全覆蓋"程式碼.gs"內容,並儲存.
