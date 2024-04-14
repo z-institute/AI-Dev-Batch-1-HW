@@ -6,7 +6,7 @@
 
 <!--![圖片](https://hackmd.io/_uploads/S12xPJml0.png)-->
 
-<img src="https://hackmd.io/_uploads/S12xPJml0.png" alt="image" />
+<img src="imges/S12xPJml0.png" alt="image" />
 
 2. 至[AccuGPTsheet](https://github.com/accucrazy/AccuGPTsheet)的main.js內複製所有內容(code).
 
