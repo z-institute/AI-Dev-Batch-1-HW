@@ -4,9 +4,7 @@
 ---
 1. 開啟google worksheet,選擇"擴充功能\AppScript".
 
-<!--![圖片](https://hackmd.io/_uploads/S12xPJml0.png)-->
-
-<img src="imges/S12xPJml0.png" alt="image" />
+![圖片](imges/S12xPJml0.png)
 
 2. 至[AccuGPTsheet](https://github.com/accucrazy/AccuGPTsheet)的main.js內複製所有內容(code).
 
