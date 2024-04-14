@@ -9,35 +9,28 @@
 2. 至[AccuGPTsheet](https://github.com/accucrazy/AccuGPTsheet)的main.js內複製所有內容(code).
 
 ![圖片](imges/rksVukmgA.png)
-<img src="https://hackmd.io/_uploads/rksVukmgA.png" alt="image" />
 
 3. 回到Apps Script頁面,將步驟2.的複製內容完全覆蓋"程式碼.gs"內容,並儲存.
 
- <!--![圖片](https://hackmd.io/_uploads/SJD2dkQxC.png)-->
- <img src="https://hackmd.io/_uploads/SJD2dkQxC.png" alt="image"/>
+![圖片](imges/SJD2dkQxC.png)
  
 4. 至Google sheet中執行查詢結果出現錯誤訊息如下("Unable to fetch response").
 
- <!--![圖片](https://hackmd.io/_uploads/B1EaLbFlC.png)-->
- <img src="https://hackmd.io/_uploads/B1EaLbFlC.png" alt="image"/>
+![圖片](imges/B1EaLbFlC.png)
  
- <!--![圖片](https://hackmd.io/_uploads/BJ0sP-tl0.png)-->
- <img src="https://hackmd.io/_uploads/BJ0sP-tl0.png" alt="image"/>
+![圖片](imges/BJ0sP-tl0.png)
  
 5. 進入Apps Script進行偵錯後發現OpenAI實際回傳的錯誤訊息為"insufficient_quota".
 
- <!--![Error](https://hackmd.io/_uploads/rkBid-KgR.png)-->
- <img src="https://hackmd.io/_uploads/rkBid-KgR.png" alt="image"/>
+![圖片](imges//rkBid-KgR.png)
 
 6. 回到OpenAI的usage網頁查詢才發現原有的free ５美元quota早已於去年過期.
 
-<!--![Expired](https://hackmd.io/_uploads/S1uA_bFeC.png)-->
- <img src="https://hackmd.io/_uploads/S1uA_bFeC.png" alt="image"/>
+![圖片](imges//S1uA_bFeC.png)
  
 7. 經充值後已可正常透過Goole Sheet利用AccuGPTsheet功能進行查詢.
 
-<!--![圖片](https://hackmd.io/_uploads/SkfZ2-YgC.png)-->
- <img src="https://hackmd.io/_uploads/SkfZ2-YgC.png" alt="image"/>
+![圖片](imges//SkfZ2-YgC.png)
 
 
 -----
