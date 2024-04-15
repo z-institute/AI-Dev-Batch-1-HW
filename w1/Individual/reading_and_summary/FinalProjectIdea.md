@@ -2,22 +2,23 @@
 
 [模板網址(開發班畢業專案規劃模板)](https://hackmd.io/@zinstitute/rJj4OXFzp)
 
-## 第一個想做的專案題目點子 "待補"
+## 長者知識庫問答助手
 
 ### 簡述 2 大重點功能
 
-1. 功能1
-2. 功能2
+1. 回答長者感興趣的問題，提供長者生活數位化的接軌知識
+2. 在網頁中呈現一個會互動的人物or像新聞那樣的AI主播(?)
+3. 給一篇相關的文章
 
 ### 最像的 2 個 project
 
-1. pro1
-2. pro2
+1. [以色列新創ElliQ](https://buzzorange.com/techorange/2024/01/11/natural-language-generative-ai-demographics-older-users-loneliness-aarp/)
+2. [Replika](https://replika.com/)
 
 ### 跟市面上的有什麼差別
 
-1. 差別1
-2. 差別2
+1. 有更多相關知識的補充
+2. 主要面相中文使用者
 
 ## 第二個想做的專案題目點子
 
