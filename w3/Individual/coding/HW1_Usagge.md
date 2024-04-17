@@ -28,26 +28,26 @@ poetry run python importer\save_notion_html.py
 
 ### 缺少了selenium的處理
 
-![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049001/w3/Individual/coding/image/Week2HW_pic01.PNG)
+![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049001/w3/Individual/coding/image/Week3HW_pic01.PNG)
 from selenium import webdriver
 ModuleNotFoundError: No module named 'selenium'
 
 少了selenium... 不知道Poetry少了一個套件該去pyproject.toml補 還是? 還是用pip裝一下這套件?
 
 問了ChatGPT 建議pyproject.toml補，後poetry install，避免環境混亂
-![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049001/w3/Individual/coding/image/Week2HW_pic02.PNG)
+![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049001/w3/Individual/coding/image/Week3HW_pic02.PNG)
 
 這樣應該不會檔案壞掉吧? 希望不會版本衝突
 遇到問題了，需要更改poetry.lock檔案
-![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049001/w3/Individual/coding/image/Week2HW_pic03.PNG)
+![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049001/w3/Individual/coding/image/Week3HW_pic03.PNG)
 
 改完之後安裝
-![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049001/w3/Individual/coding/image/Week2HW_pic04.PNG)
+![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049001/w3/Individual/coding/image/Week3HW_pic04.PNG)
 
 ## 繼續步驟三
 
 很好新問題
-![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049001/w3/Individual/coding/image/Week2HW_pic05.PNG)
+![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049001/w3/Individual/coding/image/Week3HW_pic05.PNG)
 又去下載了[ChromeDriver](https://chromedriver.chromium.org/downloads)
 參考了[Python Selenium with VSCODE 教學筆記](https://hackmd.io/@FortesHuang/S1V6jrvet#%E4%B8%89%E3%80%81%E5%AE%89%E8%A3%9D-WebDriver)
 
@@ -112,4 +112,4 @@ ValueError: Timeout value connect was <object object at 0x00000160BBC44570>, but
 ```
 
 詢問ChatGPT感覺更複雜了LUL
-![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049001/w3/Individual/coding/image/Week2HW_pic06.PNG)
+![Image text](https://raw.githubusercontent.com/z-institute/AI-Dev-Batch-1-HW/Z24049001/w3/Individual/coding/image/Week3HW_pic06.PNG)
