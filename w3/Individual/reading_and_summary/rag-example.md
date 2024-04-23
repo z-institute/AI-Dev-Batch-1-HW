@@ -57,10 +57,15 @@ langchain_google_genai._common.GoogleGenerativeAIError: Error embedding content:
 
 
 ### bot.py
--  範例的 python-telegram-bot 是舊版 v13 的用法，如果安裝最新版本的 python-telegram-bot，會產生大量物件沒有屬性的錯誤。
+- 範例的 python-telegram-bot 是舊版 v13 的用法，如果安裝最新版本的 python-telegram-bot，會產生大量物件沒有屬性的錯誤。
    最終參考 stackoverflow 這篇 https://stackoverflow.com/questions/74986002/attributeerror-updater-object-has-no-attribute-dispatcher ，降版讓程式不會報錯
-- 然後要做什麼就不知道了，得參考 TG 官方文件，但時間不夠用了。
-  <img width="850" alt="image" src="https://github.com/z-institute/AI-Dev-Batch-1-HW/assets/17631356/8339c2b9-520d-478d-90de-2b362b94192a">
+- 然後執行 bot.py 啟動
+   <img width="850" alt="image" src="https://github.com/z-institute/AI-Dev-Batch-1-HW/assets/17631356/8339c2b9-520d-478d-90de-2b362b94192a">
+- 有創建了 Ranger AI，並登入網頁版方便測試
+  <img width="1235" alt="image" src="https://github.com/z-institute/AI-Dev-Batch-1-HW/assets/17631356/71211b27-89cf-4008-87cf-d6513b8a2df3">
+- 又報錯了
+  <img width="1953" alt="image" src="https://github.com/z-institute/AI-Dev-Batch-1-HW/assets/17631356/911cd1fe-b69b-41b0-85bc-1abfcf0ab054">
+
 
 
 
