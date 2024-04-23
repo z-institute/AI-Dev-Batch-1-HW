@@ -68,7 +68,8 @@ langchain_google_genai._common.GoogleGenerativeAIError: Error embedding content:
 - 看了一下錯誤改寫程式碼，檢查 .faiss 檔案是否存在，至少讓 bot 有點回應
   <img width="899" alt="image" src="https://github.com/z-institute/AI-Dev-Batch-1-HW/assets/17631356/e6ad51f2-9f05-43fc-a393-4f8feceffabc">
   <img width="799" alt="image" src="https://github.com/z-institute/AI-Dev-Batch-1-HW/assets/17631356/f3549717-ec44-4533-acde-7a959a378825">
-
-
-
+- 改了 faiss 路徑，發訊息給 Bot，遇到新的錯誤。
+  僅知道與  FAISS 索引(及向量?)有關，但上週改課較臨時沒上到，也沒影片回顧，少了相關領域知識可以有效的下關鍵字查找問題。
+  <img width="1742" alt="image" src="https://github.com/z-institute/AI-Dev-Batch-1-HW/assets/17631356/3ee9619d-551b-4ddb-917c-d5f990f560ab">
+  
 
