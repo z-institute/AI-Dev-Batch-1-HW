@@ -55,3 +55,12 @@ langchain_google_genai._common.GoogleGenerativeAIError: Error embedding content:
    <img width="889" alt="06" src="https://github.com/z-institute/AI-Dev-Batch-1-HW/assets/17631356/88edec06-e2ed-4e9d-88d9-bc9ff225d6e3">
 
 
+
+### bot.py
+-  範例的 python-telegram-bot 是舊版 v13 的用法，如果安裝最新版本的 python-telegram-bot，會產生大量物件沒有屬性的錯誤。
+   最終參考 stackoverflow 這篇 https://stackoverflow.com/questions/74986002/attributeerror-updater-object-has-no-attribute-dispatcher ，降版讓程式不會報錯
+- 然後要做什麼就不知道了，得參考 TG 官方文件，但時間不夠用了。
+  <img width="850" alt="image" src="https://github.com/z-institute/AI-Dev-Batch-1-HW/assets/17631356/8339c2b9-520d-478d-90de-2b362b94192a">
+
+
+
