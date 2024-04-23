@@ -65,6 +65,9 @@ langchain_google_genai._common.GoogleGenerativeAIError: Error embedding content:
   <img width="1235" alt="image" src="https://github.com/z-institute/AI-Dev-Batch-1-HW/assets/17631356/71211b27-89cf-4008-87cf-d6513b8a2df3">
 - 又報錯了
   <img width="1953" alt="image" src="https://github.com/z-institute/AI-Dev-Batch-1-HW/assets/17631356/911cd1fe-b69b-41b0-85bc-1abfcf0ab054">
+- 看了一下錯誤改寫程式碼，檢查 .faiss 檔案是否存在，至少讓 bot 有點回應
+  <img width="899" alt="image" src="https://github.com/z-institute/AI-Dev-Batch-1-HW/assets/17631356/e6ad51f2-9f05-43fc-a393-4f8feceffabc">
+  <img width="799" alt="image" src="https://github.com/z-institute/AI-Dev-Batch-1-HW/assets/17631356/f3549717-ec44-4533-acde-7a959a378825">
 
 
 
