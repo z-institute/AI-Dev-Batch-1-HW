@@ -30,6 +30,7 @@
 ---
 
 **C). 去 https://telegram.me/BotFather 私訊他 /newbot 建立一個新的 telegram bot，把 bot token 放入 env，嘗試參考範例中 bot.py 做一個自己的 telegram bot**
+
 ---
 1. 向telegram BotFather申請bot machine後可取得HTTP API.
 
