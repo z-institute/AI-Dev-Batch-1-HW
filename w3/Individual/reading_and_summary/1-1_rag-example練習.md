@@ -1,4 +1,4 @@
-# rag-example練習
+# 1-1 rag-example練習
 
 ## 安裝 LangChain CLI
 ```
