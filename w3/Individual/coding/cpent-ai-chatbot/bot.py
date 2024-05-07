@@ -1,5 +1,5 @@
 from telegram import Update
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, ConversationHandler
+from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters, CallbackContext, ConversationHandler
 import faiss
 import numpy as np
 import os
@@ -42,36 +42,43 @@ nltk.download('punkt')
 TRAINING_DATA = 1
 
 
-def start(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('Hi! Send me a message and I will find the closest match in the FAISS index.')
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:    
+    await update.message.reply_text(
+        'Hi! Send me a message and I will find the closest match in the FAISS index.'
+    )
 
-def handle_message(update: Update, context: CallbackContext) -> None:
+async def handle_message(update: Update, context: CallbackContext) -> None:
     # Assuming the message is a query to the FAISS index
     query = update.message.text
 
     user_id = update.message.from_user.id
     # user id to string
 
-    vector_store = FAISS.load_local("all_faiss/"+ str(user_id) + "/faiss_index", embeddings)
+    vector_store = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
 
     ai_response = final_chain.invoke(
         {"question": query, 
          "input_documents": vector_store.similarity_search(query)}
     )
-    # print(ai_response)
+    print(ai_response)
     
     # Send the AI response back to the user
-    update.message.reply_text(ai_response["output_text"])
+    await update.message.reply_text(
+        ai_response["output_text"]
+    )
 
-def receive_training_data(update: Update, context: CallbackContext) -> int:
+async def receive_training_data(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    print('receive_training_data') 
+
     data = update.message.text
     user_id = str(update.message.from_user.id)
     markdown_file_path = f'train_docs/{user_id}/data.md'
 
     os.makedirs(os.path.dirname(markdown_file_path), exist_ok=True)
 
-    with open(markdown_file_path, 'a') as file:
+    with open(markdown_file_path, 'a', encoding="utf8") as file:
         file.write(data + '\n')
+
 
     # Place your training logic here
     loader = DirectoryLoader(
@@ -95,41 +102,47 @@ def receive_training_data(update: Update, context: CallbackContext) -> int:
     db = FAISS.from_documents(chunks, embeddings)
     db.save_local("all_faiss/"+ user_id + "/faiss_index")
         
-    update.message.reply_text('Trained successfully.')
+    await update.message.reply_text(
+        'Trained successfully.'
+    )
+
     return ConversationHandler.END
 
-def train(update: Update, context: CallbackContext) -> int:
-    update.message.reply_text('Please input the training data in markdown format.')
+async def train(update: Update, context: CallbackContext) -> int:
+    await update.message.reply_text(
+        'Please input the training data in markdown format.'
+    )
     return TRAINING_DATA
 
-def cancel(update: Update, context: CallbackContext) -> int:
-    update.message.reply_text('Training canceled.')
+async def cancel(update: Update, context: CallbackContext) -> int:
+    await update.message.reply_text(
+        'Training canceled.'
+    )
     return ConversationHandler.END
 
 def main() -> None:
-    updater = Updater(token=os.environ.get('BOT_TOKEN'), use_context=True)
 
-    dispatcher = updater.dispatcher
-
+    print('main start') 
+    application = Application.builder().token(token=os.environ.get("BOT_TOKEN")).build()
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('train', train)],
         states={
-            TRAINING_DATA: [MessageHandler(Filters.text & ~Filters.command, receive_training_data)],
+            TRAINING_DATA: [
+                MessageHandler(
+                    filters.TEXT & ~filters.COMMAND, receive_training_data
+                )
+            ],
         },
         fallbacks=[CommandHandler('cancel', cancel)]
     )
 
-    dispatcher.add_handler(conv_handler)
+    application.add_handler(conv_handler)
     # Ensure the normal message handler is added after the ConversationHandler
     # so it doesn't preempt conversation state messages
-    dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, handle_message))
-    dispatcher.add_handler(CommandHandler("start", start))
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+    application.add_handler(CommandHandler("start", start))
 
-
-
-    updater.start_polling()
-
-    updater.idle()
+    application.run_polling(allowed_updates=Update.ALL_TYPES)
 
 if __name__ == '__main__':
     main()
